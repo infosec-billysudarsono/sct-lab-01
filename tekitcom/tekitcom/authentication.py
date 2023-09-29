@@ -7,7 +7,7 @@ class UserAuthBackend:
             user = User.objects.get(username=username)
             
             if request.POST['login_type'] not in ["PASSWORD", "DEFAULT", "GOJEK_OTP", "BLIBLI"]:
-                raise ValidationError('[ERROR] login_type is not one of the values accepted ["PASSWORD", "DEFAULT", "GOJEK_OTP", "BLIBLI_OAUTH"]')
+                raise ValidationError('login_type is not one of the values accepted ["PASSWORD", "DEFAULT", "GOJEK_OTP", "BLIBLI_OAUTH"]')
             
             if request.POST['login_type'] == "GOJEK_OTP":
                 return user
@@ -18,10 +18,10 @@ class UserAuthBackend:
             return None
         
         except User.DoesNotExist:
-            raise ValidationError('[ERROR] User does not exists!')
+            raise ValidationError('User does not exists!')
 
     def get_user(self, user_id):
         try:
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
-            raise ValidationError('[ERROR] User does not exists!')
+            raise ValidationError('User does not exists!')

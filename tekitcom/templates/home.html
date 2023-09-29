@@ -3,14 +3,22 @@
 {% block content %}
 
 {% load static %}
-<img src="{% static 'logo.png' %}">
+<img src="{% static 'logo.png' %}" width="30%">
+<br><br>
 
 {% if user.is_authenticated %}
-  <p>WELCOME, {{ user.username }}!</p>
-  <a href="{% url 'logout' %}">Log Out</a>
+  <h3>WELCOME, {{ user.username }} !</h3>
+  <br><br><br><br>
+  <a href="{% url 'logout' %}">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log Out</button>
+  </a>
+  
 {% else %}
-  <p>You are not logged in!</p>
-  <a href="{% url 'login' %}">Log In</a>
+  <h3>Login first!</h3>
+  <br><br><br><br>
+  <a href="{% url 'login' %}">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+  </a>
 {% endif %}
 
 {% endblock %}
